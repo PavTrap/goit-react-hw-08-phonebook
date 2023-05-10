@@ -1,9 +1,10 @@
 .section {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	/* justify-content: center; */
 	align-items: center;
 	background-color: #f8bcad;
+	height: 100vw;
  }
  
  .button {
