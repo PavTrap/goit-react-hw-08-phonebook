@@ -4,8 +4,8 @@ import React from 'react';
 import ContactList from './ContactList';
 import Filter from './Filter';
 import  NewContactForm  from './ContactForm';
-import css from './Contacts.module.css';
 import { useSelector } from 'react-redux';
+import css from './Contacts.module.css';
 
 
 
@@ -44,6 +44,7 @@ const visibleContacts = getVisibleContacts();
 
 
   };
+
 
 
 
