@@ -10,7 +10,7 @@ export default function NewContactForm(){
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts)
-
+console.log(contacts);
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -29,18 +29,14 @@ export default function NewContactForm(){
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (
-      contacts.some(
-        value => value.name.toLocaleLowerCase() === name.toLocaleLowerCase()
-      )
-    ) {
+    if (contacts.some(value => value.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
       alert(`${name} is already in contacts`);
     } else {
       dispatch(addContact({ name, number }));
     }
     reset();
   };
-
+console.log(addContact())
 
   return(
     <form className={css.form} onSubmit={handleSubmit}>

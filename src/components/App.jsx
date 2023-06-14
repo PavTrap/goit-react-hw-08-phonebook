@@ -13,8 +13,9 @@ import { useSelector } from 'react-redux';
 export const App = () => {
 const filter = useSelector(state => state.filter);
 // console.log(filter);
-const contacts = useSelector(state => state.contats);
-console.log(contacts);
+const contacts = useSelector(state => state.contacts);
+// console.log(contacts);
+
 
 const getVisibleContacts = () => {
   // const normalizedFilter = filter.toLowerCase();
@@ -40,6 +41,35 @@ const visibleContacts = getVisibleContacts();
           {/* <ContactList /> */}
         </div>
       );
+
+
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -112,7 +142,7 @@ const visibleContacts = getVisibleContacts();
 //       <ContactList contacts={visibleContacts} onDeleteContact={deleteContact} />
 //     </div>
 //   );
-};
+
 
 
 

@@ -10,14 +10,13 @@ export const sliceContacts = createSlice({
 	],
 	reducers: {
 		addContact(state, action) {
-			// console.log(state);
-			// console.log(action);
+			console.log(state);
+			console.log(action);
 			state.push({
 				id: Math.random().toString(),
 	     		name: action.payload.name,
 	      	number: action.payload.number,
 			})
-			console.log(state.contacts)
 		},
 		deleteContact(state, action) {
 			return state.filter(item => item.id !== action.payload.id);
