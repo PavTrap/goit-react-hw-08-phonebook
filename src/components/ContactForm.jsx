@@ -1,18 +1,17 @@
-// import React, { Component } from 'react';
 import React, {useState} from 'react';
 import css from './Contacts.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../store/sliceContacts';
 
 
-export default function NewContactForm({onSubmit}){
+export default function NewContactForm(){
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-    // const handleNameChange = event => {
-    //   setName(event.target.value);
-    //   // this.setState({ name: 'qwe' })
-    // }
-    // const handleNumberChange = event => {
-    //   setNumber(event.target.value);
-    // }
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts)
+
+
   const handleChange = e => {
     const { name, value } = e.currentTarget;
     if (name === 'name') {
@@ -21,11 +20,25 @@ export default function NewContactForm({onSubmit}){
       setNumber(value);
     }
   };
-  const handleSubmit = e => {
-    e.preventDefault();
-    onSubmit(name, number);
+  
+
+  const reset = () => {
     setName('');
     setNumber('');
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (
+      contacts.some(
+        value => value.name.toLocaleLowerCase() === name.toLocaleLowerCase()
+      )
+    ) {
+      alert(`${name} is already in contacts`);
+    } else {
+      dispatch(addContact({ name, number }));
+    }
+    reset();
   };
 
 
@@ -63,105 +76,3 @@ export default function NewContactForm({onSubmit}){
       </form>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export class ContactForm extends Component {
-//   state = {
-//     name: '',
-//     number: '',
-//   };
-
-  // handleChange = e => {
-  //   const { name, value } = e.currentTarget;
-  //   this.setState({ [name]: value });
-  // };
-
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   // console.log(this.state)
-  //   this.props.onSubmit(this.state.name, this.state.number);
-  //   this.setState({ name: '', number: '' });
-  // };
-
-//   render() {
-//     return (
-//       <form className={css.form} onSubmit={this.handleSubmit}>
-//         <p>Name</p>
-//         <input
-//           type="text"
-//           className={css.input}          name="name"
-//           value={this.state.name}
-//           onChange={this.handleChange}
-//           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-//           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-//           required
-//         />
-//         <p>Number</p>
-//         <input
-//           type="tel"
-//           name="number"
-//           className={css.input} 
-//           value={this.state.number}
-//           onChange={this.handleChange}
-//           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-//           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-//           required
-//         />
-//         <button
-//           type="submit"
-//           className={css.button}
-//           disabled={!this.state.name || !this.state.number}
-//         >
-//           Add contact
-//         </button>
-//       </form>
-//     );
-//   }
-// }
-
-
-
-
-
-
-
-
-
-	// return(
-	// 	<div>
-	// 		<lable>
-	// 			Name
-	// 			<br/>
-	// 			<input
-	// 				type="text"
-	// 				name="name"
-	// 				pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-	// 				title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-	// 				required
-	// 			/>
-	// 			<br/>
-	// 		</lable>
-	// 		<button>Add contact</button>
-	// 	</div>
-	// )
