@@ -1,0 +1,60 @@
+.ul {
+  
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
+	width: 500px;
+  
+ }
+ 
+ .li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 60px;
+	font-size: 18px;
+
+	
+ 
+	& > span {
+	  width: 30%;
+	  font-size: 16px;
+	  /* @media (min-width: 600px) {
+		 width: 50%;
+		 font-size: 22px;
+	  } */
+	}
+ }
+ 
+ .contacts {
+	width: 250px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+ }
+ .button {
+	display: block;
+	background-color: #f86642;;
+	border-radius: 20px;
+	width: 100px;
+	height: 50px;
+	border: none;
+	cursor: pointer;
+	transition: all 150ms linear;
+	font-size: 18px;
+ }
+ 
+ 
+ .button:active{
+	background-color: #fc3e0f;
+	box-shadow: 0 0 2px #fc3e0f, 0 0 2px #fc3e0f, 0 0 2px #fc3e0f;
+	color: white;
+	font-size: 20px;
+ }
+ .button:hover{
+	background-color: #fc3e0f;
+	box-shadow: 0 0 2px #fc3e0f, 0 0 2px #fc3e0f, 0 0 2px #fc3e0f;
+	color: white;
+	font-size: 20px;
+ }

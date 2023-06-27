@@ -1,57 +1,43 @@
-import React from 'react';
-// import Notiflix from 'notiflix';
-// import shortid from 'shortid';
-import ContactList from './ContactList';
-import Filter from './Filter';
-import  NewContactForm  from './ContactForm';
-import { useSelector } from 'react-redux';
-import css from './Contacts.module.css';
+import { lazy, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { Layout } from './Layout/Layout';
+import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { PublicRoute } from './PublicRoute/PublicRoute';
+import { useDispatch } from 'react-redux';
+import { current } from 'redux/auth/authThunk';
+import { NotFoundPage } from '../pages/NotFoundPage/NotFoundPage';
 
-
-
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
+const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 
 export const App = () => {
-const filter = useSelector(state => state.filter);
-// console.log(filter);
-const contacts = useSelector(state => state.contacts);
-// console.log(contacts);
+  const dispatch = useDispatch();
 
-
-const getVisibleContacts = () => {
-  // const normalizedFilter = filter.toLowerCase();
-  return (contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  ));
-};
-
-const visibleContacts = getVisibleContacts();
-
+  useEffect(() => {
+    dispatch(current());
+  }, [dispatch]);
 
   return (
-        <div className={css.section}>
-          <h1>Phonebook</h1>
-    
-          <NewContactForm />
-          <h1>Contacts</h1>
-          {/* <Filter value={} onChange={} /> */}
-          <Filter />
-    
-          {/* <ContactList contacts={} onDeleteContact={} /> */}
-          <ContactList contacts={visibleContacts} />
-          {/* <ContactList /> */}
-        </div>
-      );
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="home" />} />
 
+          <Route path="home" element={<HomePage />} />
+          <Route path="register" element={<PublicRoute><SignUpPage /></PublicRoute>}/>
+          <Route path="login" element={<PublicRoute><LoginPage /></PublicRoute>}/>
+          <Route path="contacts" element={<PrivateRoute><ContactsPage /></PrivateRoute>}/>
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
 
-  };
-
-
-
-
-
-
-
-
+      <Toaster position="top-center" reverseOrder={false} />
+    </>
+  );
+};
 
 
 
