@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_08_phonebook=self.webpackChunkgoit_react_hw_08_phonebook||[]).push([[674],{8674:function(e,o,n){n.r(o),n.d(o,{default:function(){return i}});var a="HomePage_homepage__FicID",t="HomePage_homepagetitle__57eCQ",c=n(184),i=function(){return(0,c.jsx)("div",{className:a,children:(0,c.jsx)("h2",{className:t,children:"This is a phone book. You can create your own unique account and store your contacts in it."})})}}}]);
+//# sourceMappingURL=674.4bb1d863.chunk.js.map
