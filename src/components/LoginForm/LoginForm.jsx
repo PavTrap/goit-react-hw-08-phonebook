@@ -1,4 +1,4 @@
-import { Button, TextField, Box, Container, Typography } from '@mui/material';
+import css from './LoginForm.module.css'
 
 import { useState } from 'react';
 
@@ -26,70 +26,34 @@ export function LoginForm({ onData }) {
   };
 
   return (
-    <Container component="div" maxWidth="xs">
-      <Box
-        sx={{
-          marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          backgroundColor: 'white',
-          border: 1 ,
-          borderRadius: 2,
-          boxShadow: '5px 2px 2px rgb(33 33 33)',
-          padding: '20px',
-          // boxShadow: ' rgb(33 33 33) 0px 2px 10px 1px',
-          
-        }}
-      >
-        <Typography
-          variant="h4"
-          
-        >
-          Log In
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            autoFocus
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            type="email"
-            value={email}
-            variant="standard"
-            onChange={handleChange}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-            value={password}
-            variant="standard"
-            onChange={handleChange}
-          />
+    <section className={css.layout}>
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{
-              mt: 3,
-              mb: 2,
-              color: '#0f1111',
-              background: '#6688d0',
-            }}
-          >
-            Log In
-          </Button>
-        </Box>
-      </Box>
-    </Container>
+		<div className={css.formBlock}>
+			<h4 className={css.title}>Sign Up</h4>
+			<form className={css.form} onSubmit={handleSubmit}>
+				<input 	onChange={handleChange}
+							className={css.input}
+							placeholder="Enter email..."
+							required
+            			fullWidth
+            			name="email"
+            			autoComplete="email"
+            			type="email"
+            			value={email}/>
+				<input 	onChange={handleChange}
+							className={css.input}
+							placeholder="Enter password..."
+							required
+            			fullWidth
+            			name="password"
+            			type="password"
+            			autoComplete="current-password"
+            			value={password}/>
+				<button className={css.button} type="submit" fullWidth>Sign Up</button>
+			</form>
+		</div>
+
+  </section>
+  
   );
 }
