@@ -20,7 +20,7 @@ const ContactsPage = () => {
 
   return (
     
-      <>
+      <section className={css.section}>
         <div className={css.div}>
           <h2 className={css.h2}>Phonebook</h2>
           <Form onData={onAddContact} />
@@ -43,7 +43,7 @@ const ContactsPage = () => {
           )}
           
         </div>
-      </>
+      </section>
     
   );
 };

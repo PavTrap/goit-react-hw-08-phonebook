@@ -29,7 +29,7 @@ export function LoginForm({ onData }) {
     <section className={css.layout}>
 
 		<div className={css.formBlock}>
-			<h4 className={css.title}>Sign Up</h4>
+			<h4 className={css.title}>Log In</h4>
 			<form className={css.form} onSubmit={handleSubmit}>
 				<input 	onChange={handleChange}
 							className={css.input}
@@ -49,7 +49,7 @@ export function LoginForm({ onData }) {
             			type="password"
             			autoComplete="current-password"
             			value={password}/>
-				<button className={css.button} type="submit" fullWidth>Sign Up</button>
+				<button className={css.button} type="submit" fullWidth>Log In</button>
 			</form>
 		</div>
 
