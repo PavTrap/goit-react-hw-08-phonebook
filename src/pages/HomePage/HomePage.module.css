@@ -1,7 +1,8 @@
 .homepage {
+	height: 100vw;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	/* align-items: center; */
 	padding: 40px;
 	/* background-color: #60ddf0; */
 	@media screen and (max-width: 550px) {
